@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Profile;
 
 import com.exeweb.ServiceJPA.entities.Order;
 import com.exeweb.ServiceJPA.entities.User;
+import com.exeweb.ServiceJPA.entities.enums.OrderStatus;
 import com.exeweb.ServiceJPA.repositories.OrderRepository;
 import com.exeweb.ServiceJPA.repositories.UserRepository;
 
@@ -34,11 +35,11 @@ public class TestConfig implements CommandLineRunner {
 		
 		
 		
-		
-		
-		Order order1 = new Order(null, Instant.parse("2019-06-20T19:53:07Z"), user1);
-		Order order2 = new Order(null, Instant.parse("2019-07-21T03:42:10Z"), user2);
-		
+
+
+		Order order1 = new Order(null, Instant.parse("2019-06-20T19:53:07Z"), OrderStatus.WAITING_PAYMENT, user1);
+		Order order2 = new Order(null, Instant.parse("2019-07-21T03:42:10Z"), OrderStatus.PAID, user2);
+
 		userRepository.saveAll(Arrays.asList(user1, user2));
 
 		orderRepository.saveAll(Arrays.asList(order1, order2));	
